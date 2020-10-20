@@ -43,7 +43,7 @@ func senderChecker(peer smtpd.Peer, addr string) error {
 		if err != nil {
 			return smtpd.Error{Code: 451, Message: "Bad sender address - Username"}
 		}
-
+		log.Printf("addr: %s - email: %s\n", strings.ToLower(addr),strings.ToLower(email))
 		if strings.ToLower(addr) != strings.ToLower(email) {
 			return smtpd.Error{Code: 451, Message: "Bad sender address - email"}
 		}
